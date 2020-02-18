@@ -1,6 +1,6 @@
 # Survival Cluster Analysis (ACM CHIL 2020)
 
-This repository contains the TensorFlow code to replicate experiments in our paper [Survival Cluster Analysis](https://arxiv.org/pdf/wip.pdf) (ACM CHIL 2018):
+This repository contains the TensorFlow code to replicate experiments in our paper [Survival Cluster Analysis](https://arxiv.org/pdf/wip.pdf) (ACM CHIL 2020):
 ```latex
 @inproceedings{chapfuwa2020sca, 
   title={Survival Cluster Analysis},
