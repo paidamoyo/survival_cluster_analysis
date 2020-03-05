@@ -1,11 +1,11 @@
 # Survival Cluster Analysis (ACM CHIL 2020)
 
-This repository contains the TensorFlow code to replicate experiments in our paper [Survival Cluster Analysis](https://arxiv.org/pdf/wip.pdf) (ACM Conference on Health, Inference and Learning (CHIL) 2020):
+This repository contains the TensorFlow code to replicate experiments in our paper [Survival Cluster Analysis](https://arxiv.org/abs/2003.00355) (ACM Conference on Health, Inference, and Learning (ACM CHIL) 2020):
 ```latex
-@inproceedings{chapfuwa2020sca, 
+@inproceedings{chapfuwa2020survival, 
   title={Survival Cluster Analysis},
-  author={Chapfuwa, Paidamoyo and Li, Chunyuan and Mehta, Nikhil and Carin, Lawrence and Henao, Ricardo},
-  booktitle={ACM Conference on Health, Inference and Learning},
+  author={Paidamoyo Chapfuwa and Chunyuan Li and Nikhil Mehta and Lawrence Carin and Ricardo Henao},
+  booktitle={ACM Conference on Health, Inference, and Learning},
   year={2020}
 }
 ```
