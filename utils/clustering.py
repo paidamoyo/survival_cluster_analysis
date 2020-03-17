@@ -19,14 +19,6 @@ def run_k_means(features, n_clusters, num_iter):
     return centroids
 
 
-def assign_to_nearest(samples, centroids):
-    # Finds the nearest centroid for each sample
-    distances = t_dist_distance(a=samples, b=centroids)
-    mins = tf.argmin(distances, axis=0)
-    nearest_indices = mins
-    return nearest_indices
-
-
 def cluster_assignment(centroids, embed_z, n_clusters, batch_size, gamma_0, pop_pi):
     distance = tf.transpose(t_dist_distance(a=embed_z, b=centroids))
 
