@@ -79,7 +79,7 @@ Once the networks are trained and the results are saved, we extract the followin
 * Training and evaluation metrics are logged in **model.log**
 * Epoch based cost function plots can be found in the [**plots**](./plots) directory
 * Numpy files to generate calibration and cluster plots are saved in  [**matrix**](./matrix) directory
-* Run the **Calibration.ipynb** to generate calibration results and **Clustering.ipynb** for clustering results
+* Run the [Calibration.ipynb](./Calibration.ipynb) to generate calibration results and [Clustering.ipynb](./Clustering.ipynb) for clustering results
 
 ## Acknowledgments
 Contact [Paidamoyo](https://github.com/paidamoyo) for issues relevant to this project.
