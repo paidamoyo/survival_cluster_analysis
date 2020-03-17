@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 
-def approx_km_prob_dead(predicted, empirical, t_range, batch_size, e, t_range_size):
+def km_estimator(predicted, empirical, t_range, batch_size, e, t_range_size):
     """Computes the calibration loss from SFM"""
 
     def cond(idx, pred_surv, emp_surv, emd_los):

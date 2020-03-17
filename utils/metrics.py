@@ -4,6 +4,7 @@ mpl.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+import tensorflow as tf
 
 seed = 31415
 np.random.seed(seed)
@@ -60,3 +61,17 @@ def plot_cost(training, validation, name, model, epochs, best_epoch):
     plt.xlabel('Epoch')
     plt.legend(loc='best', fontsize=10)
     plt.savefig('plots/{}_{}'.format(model, name))
+
+
+def l2_loss(scale):
+    l2 = tf.add_n([tf.nn.l2_loss(v) for v in tf.trainable_variables()])
+    return l2 * scale
+
+
+def l1_loss(scale):
+    l1_regularizer = tf.contrib.layers.l1_regularizer(
+        scale=scale, scope=None
+    )
+    weights = tf.trainable_variables()  # all vars of your graph
+    l1 = tf.contrib.layers.apply_regularization(l1_regularizer, weights)
+    return l1

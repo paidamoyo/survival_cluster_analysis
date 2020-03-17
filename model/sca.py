@@ -10,10 +10,10 @@ from lifelines.utils import concordance_index
 from scipy.stats.stats import spearmanr
 
 from model.risk_network import pz_given_x, pt_given_z
-from utils.cost import batch_metrics, l2_loss, l1_loss
-from utils.metrics import plot_cost
+from utils.accuracy import accuracy_loss
+from utils.metrics import plot_cost, l2_loss, l1_loss
 from utils.clustering import cluster_assignment, update_pop_pi, run_k_means
-from utils.sfm_cost import approx_km_prob_dead
+from utils.calibration import km_estimator
 import math
 from utils.tf_helpers import create_centroids, create_pop_pi, show_all_variables
 
@@ -171,18 +171,18 @@ class SCA(object):
         self.predicted_time = tf.squeeze(t_gen)
         print("predicted_time: ", self.predicted_time.shape)
 
-        self.accuracy_loss = batch_metrics(e=self.e,
+        self.accuracy_loss = accuracy_loss(e=self.e,
                                            predicted=self.predicted_time,
                                            batch_size=self.batch_size_tensor,
                                            empirical=self.t)
 
     def _risk_surv_fun_match(self):
 
-        pop_pred_surv, pop_emp_surv, pop_km_loss = approx_km_prob_dead(predicted=self.predicted_time,
-                                                                       t_range=self.t_range, e=self.e,
-                                                                       batch_size=self.batch_size_tensor,
-                                                                       t_range_size=self.t_range_size,
-                                                                       empirical=self.t)
+        pop_pred_surv, pop_emp_surv, pop_km_loss = km_estimator(predicted=self.predicted_time,
+                                                                t_range=self.t_range, e=self.e,
+                                                                batch_size=self.batch_size_tensor,
+                                                                t_range_size=self.t_range_size,
+                                                                empirical=self.t)
 
         self.calibration_loss = pop_km_loss
         self.pred_surv = pop_pred_surv
