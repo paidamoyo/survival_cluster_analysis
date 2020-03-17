@@ -16,7 +16,10 @@ This repository contains the TensorFlow code to replicate experiments in our pap
 
 Illustration of Survival Clustering Analysis (SCA).
 The latent space has a mixture-of-distributions structure, illustrated
-as three mixture components.
+as three mixture components. Observation
+`x` is mapped into its latent representation `z` via a deterministic
+encoding, which is then used to
+stochastically predict (via sampling) the time-to-event `p(t|x)`.
 
 ![Risk](figures/risk.png)
 
