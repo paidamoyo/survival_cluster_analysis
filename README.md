@@ -10,4 +10,72 @@ This repository contains the TensorFlow code to replicate experiments in our pap
 }
 ```
  
-This project is maintained by [Paidamoyo Chapfuwa](https://github.com/paidamoyo). Please contact <paidamoyo.chapfuwa@duke.edu> for any relevant issues.
+## Key Results
+
+![Risk](figures/risk.png)
+
+Cluster-specific Kaplan-Meier survival profiles for three clustering methods on the SLEEP dataset. 
+Our model (SCA) can identify high-, medium- and low-risk individuals. Demonstrating the
+need to account for time information via a non-linear transformation of covariates when clustering survival datasets
+
+
+![Clustering](figures/clustering.png)
+
+Inferred clusters on the testing set of SLEEP dataset from our SCA model.
+
+## Prerequisites
+The code is implemented with the following dependencies:
+
+- [Python  3.6.4](https://github.com/pyenv/pyenv)
+- [TensorFlow 1.8]( https://www.tensorflow.org/)
+- Additional python packages can be installed by running:   
+
+```
+pip install -r requirements.txt
+```
+
+## Data
+We consider the following datasets:
+
+- [SUPPORT](http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets)
+- [Flchain](https://vincentarelbundock.github.io/Rdatasets/doc/survival/flchain.html)
+- [SEER](https://seer.cancer.gov/)
+- [SLEEP](https://sleepdata.org/datasets/shhs): A subset of the Sleep Heart Health Study
+(SHHS), a multi-center cohort study implemented by the National
+Heart Lung & Blood Institute to determine the cardiovascular
+and other consequences of sleep-disordered breathing
+- [Framingham](https://framinghamheartstudy.org/): A subset (Framingham Offspring) of the longitudinal study of heart
+disease dataset, initially for predicting 10-year risk for future
+coronary heart disease (CHD
+- EHR: A large study from Duke University Health System centered around inpatient visits due to comorbidities in patients with Type-2 diabetes
+
+ For convenience, we provide pre-processing scripts of all datasets (except EHR, SLEEP and FRAMINGHAM). In addition, the [*data*](./data) directory contains downloaded [Flchain](https://vincentarelbundock.github.io/Rdatasets/doc/survival/flchain.html) and [SUPPORT](http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets) datasets.
+
+## Model Training
+
+Please modify the train arguments with the chosen:
+
+- `dataset` is set to one of the three public datasets `{flchain, support, seer}`, the default is `support`
+-  K cluster uppper bound `n_clusters`, the default is `25`
+- Dirichlet process concetration parameter `gamma_0` selected from `{2, 3, 4, 8}`, default is `2`
+
+* To train **SCA** run [train.py](./train.py) 
+
+```
+ python train.py --dataset support --n_clusters 25 --gamma_0 2
+```
+
+* The hyper-parameters settings can be found at [**configs.py**](./configs.py)
+
+
+## Metrics and Visualizations
+
+Once the networks are trained and the results are saved, we extract the following key results: 
+
+* Training and evaluation metrics are logged in **model.log**
+* Epoch based cost function plots can be found in the [**plots**](./plots) directory
+* Numpy files to generate calibration and cluster plots are saved in  [**matrix**](./matrix) directory
+* Run the **Calibration.ipynb** generate calibration results and **Clustering.ipynb**  to generate clustering results
+
+## Acknowledgments
+Contact [Paidamoyo](https://github.com/paidamoyo) for issues relevant to this project.

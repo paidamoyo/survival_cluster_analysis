@@ -1,0 +1,5 @@
+!model.log
+summaries/
+*.ipynb_checkpoints
+__pycache__/
+analysis/
