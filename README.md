@@ -28,7 +28,7 @@ need to account for time information via a non-linear transformation of covariat
 The code is implemented with the following dependencies:
 
 - [Python  3.6.4](https://github.com/pyenv/pyenv)
-- [TensorFlow 1.8]( https://www.tensorflow.org/)
+- [TensorFlow 1.8.0]( https://www.tensorflow.org/)
 - Additional python packages can be installed by running:   
 
 ```
