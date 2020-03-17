@@ -44,11 +44,11 @@ We consider the following datasets:
 - [SLEEP](https://sleepdata.org/datasets/shhs): A subset of the Sleep Heart Health Study
 (SHHS), a multi-center cohort study implemented by the National
 Heart Lung & Blood Institute to determine the cardiovascular
-and other consequences of sleep-disordered breathing
+and other consequences of sleep-disordered breathing.
 - [Framingham](https://framinghamheartstudy.org/): A subset (Framingham Offspring) of the longitudinal study of heart
 disease dataset, initially for predicting 10-year risk for future
-coronary heart disease (CHD
-- EHR: A large study from Duke University Health System centered around inpatient visits due to comorbidities in patients with Type-2 diabetes
+coronary heart disease (CHD).
+- EHR: A large study from Duke University Health System centered around inpatient visits due to comorbidities in patients with Type-2 diabetes.
 
  For convenience, we provide pre-processing scripts of all datasets (except EHR, SLEEP and FRAMINGHAM). In addition, the [*data*](./data) directory contains downloaded [Flchain](https://vincentarelbundock.github.io/Rdatasets/doc/survival/flchain.html) and [SUPPORT](http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets) datasets.
 
