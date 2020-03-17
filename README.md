@@ -16,7 +16,7 @@ This repository contains the TensorFlow code to replicate experiments in our pap
 
 Cluster-specific Kaplan-Meier survival profiles for three clustering methods on the SLEEP dataset. 
 Our model (SCA) can identify high-, medium- and low-risk individuals. Demonstrating the
-need to account for time information via a non-linear transformation of covariates when clustering survival datasets
+need to account for time information via a non-linear transformation of covariates when clustering survival datasets.
 
 
 ![Clustering](figures/clustering.png)
@@ -49,7 +49,7 @@ disease dataset, initially for predicting 10-year risk for future
 coronary heart disease (CHD
 - EHR: A large study from Duke University Health System centered around inpatient visits due to comorbidities in patients with Type-2 diabetes
 
- For convenience, we provide pre-processing scripts of all datasets (except EHR, SLEEP and FRAMINGHAM). In addition, the [*data*](./data) directory contains downloaded [Flchain](https://vincentarelbundock.github.io/Rdatasets/doc/survival/flchain.html) and [SUPPORT](http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets) datasets.
+ For convenience, we provide pre-processing scripts of all datasets (except EHR, and Framingham). In addition, the [*data*](./data) directory contains downloaded [Flchain](https://vincentarelbundock.github.io/Rdatasets/doc/survival/flchain.html) and [SUPPORT](http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets) datasets.
 
 ## Model Training
 
