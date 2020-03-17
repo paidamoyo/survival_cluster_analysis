@@ -10,7 +10,13 @@ This repository contains the TensorFlow code to replicate experiments in our pap
 }
 ```
  
-## Key Results
+## Model
+
+![Model](figures/model.png)
+
+Illustration of Survival Clustering Analysis (SCA).
+The latent space has a mixture-of-distributions structure, illustrated
+as three mixture components.
 
 ![Risk](figures/risk.png)
 
@@ -18,16 +24,11 @@ Cluster-specific Kaplan-Meier survival profiles for three clustering methods on 
 Our model (SCA) can identify high-, medium- and low-risk individuals. Demonstrating the
 need to account for time information via a non-linear transformation of covariates when clustering survival datasets.
 
-
-![Clustering](figures/clustering.png)
-
-Inferred clusters on the testing set of SLEEP dataset from our SCA model.
-
 ## Prerequisites
 The code is implemented with the following dependencies:
 
 - [Python  3.6.4](https://github.com/pyenv/pyenv)
-- [TensorFlow 1.8.0Nre]( https://www.tensorflow.org/)
+- [TensorFlow 1.8]( https://www.tensorflow.org/)
 - Additional python packages can be installed by running:   
 
 ```
@@ -49,7 +50,7 @@ disease dataset, initially for predicting 10-year risk for future
 coronary heart disease (CHD
 - EHR: A large study from Duke University Health System centered around inpatient visits due to comorbidities in patients with Type-2 diabetes
 
- For convenience, we provide pre-processing scripts of all datasets (except EHR, and Framingham). In addition, the [*data*](./data) directory contains downloaded [Flchain](https://vincentarelbundock.github.io/Rdatasets/doc/survival/flchain.html) and [SUPPORT](http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets) datasets.
+ For convenience, we provide pre-processing scripts of all datasets (except EHR, SLEEP and FRAMINGHAM). In addition, the [*data*](./data) directory contains downloaded [Flchain](https://vincentarelbundock.github.io/Rdatasets/doc/survival/flchain.html) and [SUPPORT](http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets) datasets.
 
 ## Model Training
 
@@ -75,7 +76,7 @@ Once the networks are trained and the results are saved, we extract the followin
 * Training and evaluation metrics are logged in **model.log**
 * Epoch based cost function plots can be found in the [**plots**](./plots) directory
 * Numpy files to generate calibration and cluster plots are saved in  [**matrix**](./matrix) directory
-* Run the **Calibration.ipynb** to generate calibration results and **Clustering.ipynb** for clustering results
+* Run the **Calibration.ipynb** generate calibration results and **Clustering.ipynb**  to generate clustering results
 
 ## Acknowledgments
 Contact [Paidamoyo](https://github.com/paidamoyo) for issues relevant to this project.
