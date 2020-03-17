@@ -4,6 +4,7 @@ import argparse
 import data.flchain.flchain_data as flchain_data
 import data.support.support_data as support_data
 import data.seer.seer_data as seer_data
+import data.sleep.sleep_data as sleep_data
 import importlib
 from model.sca import SCA
 
@@ -12,7 +13,7 @@ def init_config():
     parser = argparse.ArgumentParser(description='Survival Cluster Analysis')
 
     # model hyperparameters
-    parser.add_argument('--dataset', type=str, default='support', help='dataset in [support, flchain, seer]')
+    parser.add_argument('--dataset', type=str, default='support', help='dataset in [support, flchain, seer, sleep]')
     parser.add_argument('--GPUID', type=str, default='1', help='GPU ID')
     parser.add_argument('--n_clusters', type=int, default=25, help='K upper bound of number of clusters')
     parser.add_argument('--gamma_0', type=int, default=2,
@@ -36,7 +37,9 @@ if __name__ == '__main__':
     flchain = {"path": '', "preprocess": flchain_data, "epochs": 600}
     support = {"path": '', "preprocess": support_data, "epochs": 400}
     seer = {"path": '', "preprocess": seer_data, "epochs": 40}  # download data from SEER website
-    all_datasets = {'support': support, 'flchain': flchain, 'seer': seer}
+    sleep = {"path": '', "preprocess": sleep_data, "epochs": 300}  # download data from SLEEP website
+    all_datasets = {'support': support, 'flchain': flchain, 'seer': seer, 'sleep': sleep}
+
     data = all_datasets[args.dataset]
 
     data_set = data['preprocess'].generate_data()
