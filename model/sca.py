@@ -136,6 +136,11 @@ class SCA(object):
         self._cluster_data()
         self._risk_model()
         self._risk_surv_fun_match()
+        self._initialize_centroids()
+
+    def _initialize_centroids(self):
+        self.k_means_cent = run_k_means(centroids=self.centroids, features=self.z, num_iter=100,
+                                        n_clusters=self.n_clusters)
 
     def _cluster_data(self):
         self.centroids_dim = self.hidden_dim[len(self.hidden_dim) - 2]
@@ -267,16 +272,12 @@ class SCA(object):
 
             clust_epoch = int(self.max_epochs * 0.1)
             if epochs == clust_epoch:
-                features = self.session.run(self.z, feed_dict=feed_dict_train)
-                k_means_cent = run_k_means(features=features, n_clusters=self.n_clusters, num_iter=20)
+                k_means_cent, centroids_before = self.session.run([self.k_means_cent, self.centroids],
+                                                                  feed_dict=feed_dict_train)
+                print("running k_means: ", epochs)
                 alpha = 0.2
                 self.centroids = tf.assign(self.centroids, value=self.centroids * alpha + k_means_cent * (1 - alpha))
-
-            if epochs > clust_epoch and not self.turn_clust:
                 self.turn_clust = True
-                turn_clustering_print = "EPOCH:{} IS_CLUSTERING_ON: {}".format(epochs, self.turn_clust)
-                print(turn_clustering_print)
-                logging.debug(turn_clustering_print)
 
             if is_epoch or (i == (self.num_iterations - 1)):
                 improved_str = ''

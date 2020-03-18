@@ -1,6 +1,5 @@
 import tensorflow as tf
 import numpy as np
-from sklearn.cluster import KMeans
 
 
 def t_dist_distance(a, b):
@@ -13,10 +12,30 @@ def t_dist_distance(a, b):
     return distances
 
 
-def run_k_means(features, n_clusters, num_iter):
-    kmeans = KMeans(n_clusters=n_clusters, n_init=num_iter)
-    centroids = kmeans.fit(features).cluster_centers_
-    return centroids
+def run_k_means(centroids, features, n_clusters, num_iter):
+    updated_centroid_value = None
+    for _ in np.arange(num_iter):
+        nearest_indices = assign_to_nearest(samples=features, centroids=centroids)
+        new_centroids = update_centroids(samples=features, nearest_indices=nearest_indices,
+                                         n_clusters=n_clusters, old_centroids=centroids)
+        updated_centroid_value = new_centroids
+    return updated_centroid_value
+
+
+def assign_to_nearest(samples, centroids):
+    distances = t_dist_distance(a=samples, b=centroids)
+    mins = tf.argmin(distances, axis=0)
+    nearest_indices = mins
+    return nearest_indices
+
+
+def update_centroids(samples, nearest_indices, n_clusters, old_centroids):
+    # Updates the centroid to be the mean of all samples associated with it.
+    nearest_indices = tf.to_int32(nearest_indices)
+    partitions = tf.dynamic_partition(samples, nearest_indices, n_clusters)
+    new_centroids = tf.concat([tf.expand_dims(tf.reduce_mean(partition, 0), 0) for partition in partitions], 0)
+    new_centroids = tf.where(condition=tf.is_nan(new_centroids), x=old_centroids, y=new_centroids)
+    return new_centroids
 
 
 def cluster_assignment(centroids, embed_z, n_clusters, batch_size, gamma_0, pop_pi):
