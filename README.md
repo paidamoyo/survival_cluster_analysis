@@ -82,4 +82,4 @@ Once the networks are trained and the results are saved, we extract the followin
 * Run the [Calibration.ipynb](./Calibration.ipynb) to generate calibration results and [Clustering.ipynb](./Clustering.ipynb) for clustering results
 
 ## Acknowledgments
-This work leverages the calibration framework from [SFM](https://arxiv.org/abs/1905.08838) and the accuracy objective from [DATE](https://arxiv.org/pdf/1804.03184.pdf). Contact [Paidamoyo](https://github.com/paidamoyo) for issues relevant to this project.
+This work leverages the calibration framework from [SFM](https://ieeexplore.ieee.org/document/9244076) and the accuracy objective from [DATE](https://arxiv.org/pdf/1804.03184.pdf). Contact [Paidamoyo](https://github.com/paidamoyo) for issues relevant to this project.
